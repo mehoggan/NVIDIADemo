@@ -1,0 +1,11 @@
+######
+Directories
+######
+build/
+.idea/
+cmake-build-debug/
+
+######
+files
+######
+tags

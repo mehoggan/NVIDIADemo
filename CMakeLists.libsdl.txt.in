@@ -1,0 +1,14 @@
+cmake_minimum_required(VERSION 3.0.2)
+
+project(libsdl-download NONE)
+include(ExternalProject)
+
+ExternalProject_Add(libsdl
+	GIT_REPOSITORY git@github.com:SDL-mirror/SDL.git
+	GIT_TAG master
+	SOURCE_DIR "${CMAKE_BINARY_DIR}/libsdl-src"
+	BINARY_DIR "${CMAKE_BINARY_DIR}/libsdl-build"
+	CONFIGURE_COMMAND ""
+	BUILD_COMMAND ""
+	INSTALL_COMMAND ""
+	TEST_COMMAND "")
