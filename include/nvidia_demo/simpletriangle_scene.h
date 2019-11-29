@@ -8,12 +8,12 @@
 
 #include <memory>
 
-class SquareScene : public IScene
+class SimpleTriangleScene : public IScene
 {
 public:
-  SquareScene(const opengl_core::gl_version& version);
+  SimpleTriangleScene(const opengl_core::gl_version& version);
 
-  virtual ~SquareScene();
+  virtual ~SimpleTriangleScene();
 
   virtual bool load() override;
 

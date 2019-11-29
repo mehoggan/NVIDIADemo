@@ -13,7 +13,7 @@ set(SRC
   ./shader.cpp
   ./shader_program.cpp
   ./simple_scene.cpp
-  ./square_scene.cpp
+  ./simpletriangle_scene.cpp
 )
 
 if (BUILD_SHARED_LIBS)

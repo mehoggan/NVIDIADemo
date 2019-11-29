@@ -1,18 +1,19 @@
-#include "nvidia_demo/square_scene.h"
+#include "nvidia_demo/simpletriangle_scene.h"
 
 #include "nvidia_demo/gl_functions.h"
 #include "nvidia_demo/resource_loader.h"
 
 #include <iostream>
 
-SquareScene::SquareScene(const opengl_core::gl_version& version) :
+SimpleTriangleScene::SimpleTriangleScene(
+  const opengl_core::gl_version& version) :
   IScene(version)
 {}
 
-SquareScene::~SquareScene()
+SimpleTriangleScene::~SimpleTriangleScene()
 {}
 
-bool SquareScene::load()
+bool SimpleTriangleScene::load()
 {
   bool ret = true;
 
@@ -26,10 +27,12 @@ bool SquareScene::load()
   );
   attributes_->use();
 
-  auto v_source = ResourceLoader::load_shader("simple_square.vert", version_);
+  auto v_source = ResourceLoader::load_shader(
+    "simple_triangle.vert", version_);
   vertex_shader_.reset(new Shader(v_source, Shader::Type::VERTEX));
 
-  auto f_source = ResourceLoader::load_shader("simple_square.frag", version_);
+  auto f_source = ResourceLoader::load_shader(
+    "simple_triangle.frag", version_);
   fragment_shader_.reset(new Shader(f_source, Shader::Type::FRAGMENT));
 
   shader_program_.reset(new ShaderProgram());
@@ -42,7 +45,7 @@ bool SquareScene::load()
   return ret;
 }
 
-bool SquareScene::render(std::uint16_t width, std::uint16_t height)
+bool SimpleTriangleScene::render(std::uint16_t width, std::uint16_t height)
 {
   bool ret = true;
 
@@ -78,13 +81,13 @@ bool SquareScene::render(std::uint16_t width, std::uint16_t height)
   return ret;
 }
 
-bool SquareScene::destroy()
+bool SimpleTriangleScene::destroy()
 {
   bool ret = true;
   return ret;
 }
 
-bool SquareScene::loaded() const
+bool SimpleTriangleScene::loaded() const
 {
   return loaded_.load();
 }
