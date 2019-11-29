@@ -11,7 +11,7 @@
 class SquareScene : public IScene
 {
 public:
-  SquareScene();
+  SquareScene(const opengl_core::gl_version& version);
 
   virtual ~SquareScene();
 

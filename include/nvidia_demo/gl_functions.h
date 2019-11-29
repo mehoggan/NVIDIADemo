@@ -2978,6 +2978,8 @@ namespace opengl_core
   {
     std::uint16_t major;
     std::uint16_t minor;
+
+    friend bool operator==(const gl_version &lhs, const gl_version &rhs);
   };
 
   /**

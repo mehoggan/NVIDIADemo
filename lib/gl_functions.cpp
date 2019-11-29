@@ -314,6 +314,11 @@ PFNGLGETGRAPHICSRESETSTATUSPROC opengl_core_GetGraphicsResetStatus = NULL;
 
 namespace opengl_core
 {
+  bool operator==(const gl_version &lhs, const gl_version &rhs)
+  {
+    return lhs.major == rhs.major && lhs.minor == rhs.minor;
+  }
+
   void gl_functions::configure(const gl_version &ctx_ver)
   {
     // NOTE: glext.h from https://www.opengl.org/registry/api/GL/glext.h

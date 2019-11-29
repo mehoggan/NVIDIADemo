@@ -6,7 +6,7 @@
 class SimpleScene : public IScene
 {
 public:
-  SimpleScene() = default;
+  SimpleScene(const opengl_core::gl_version& version);
 
   virtual ~SimpleScene();
 

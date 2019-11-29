@@ -1,13 +1,15 @@
 #ifndef ISCENE_H_INCLUDED
 #define ISCENE_H_INCLUDED
 
+#include "nvidia_demo/gl_functions.h"
+
 #include <atomic>
 #include <cstdint>
 
 class IScene
 {
 public:
-  IScene();
+  explicit IScene(const opengl_core::gl_version &version);
 
   virtual ~IScene();
 
@@ -21,6 +23,7 @@ public:
 
 protected:
   std::atomic_bool loaded_;
+  opengl_core::gl_version version_;
 };
 
 #endif

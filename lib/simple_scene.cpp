@@ -2,6 +2,10 @@
 
 #include "nvidia_demo/gl_functions.h"
 
+SimpleScene::SimpleScene(const opengl_core::gl_version& version) :
+  IScene(version)
+{}
+
 SimpleScene::~SimpleScene()
 {}
 

@@ -5,7 +5,8 @@
 
 #include <iostream>
 
-SquareScene::SquareScene()
+SquareScene::SquareScene(const opengl_core::gl_version& version) :
+  IScene(version)
 {}
 
 SquareScene::~SquareScene()
@@ -25,14 +26,10 @@ bool SquareScene::load()
   );
   attributes_->use();
 
-  auto v_source = ResourceLoader::load_shader("simple_square.vert");
-  std::cout << "Compiling vertex shader : " << std::endl << v_source
-    << std::endl;
+  auto v_source = ResourceLoader::load_shader("simple_square.vert", version_);
   vertex_shader_.reset(new Shader(v_source, Shader::Type::VERTEX));
 
-  auto f_source = ResourceLoader::load_shader("simple_square.frag");
-  std::cout << "Compiling fragment shader : " << std::endl << f_source
-    << std::endl;
+  auto f_source = ResourceLoader::load_shader("simple_square.frag", version_);
   fragment_shader_.reset(new Shader(f_source, Shader::Type::FRAGMENT));
 
   shader_program_.reset(new ShaderProgram());
