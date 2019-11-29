@@ -1,22 +1,26 @@
 #include "nvidia_demo/application.h"
 
 #include "nvidia_demo/gl_functions.h"
+#include "nvidia_demo/resource_loader.h"
 
 Application::Application(
   const std::string &name,
   int,
-  char **) :
+  char **argv) :
   ready(false),
   render(true),
   running(false)
 {
+  std::string exe_path(argv[0]);
+  ResourceLoader::exe_path(exe_path.substr(0, exe_path.find_last_of("\\/")));
+
   SDL_Init(SDL_INIT_VIDEO);
   mainwindow = SDL_CreateWindow(
       name.c_str(),
       SDL_WINDOWPOS_UNDEFINED,
       SDL_WINDOWPOS_UNDEFINED,
-      640,
-      480,
+      800,
+      600,
       SDL_WINDOW_OPENGL);
   check_SDL_error(__LINE__);
 
@@ -42,7 +46,6 @@ void Application::set_scene(std::unique_ptr<IScene> &&client_scene)
     }
 
     scene = std::move(client_scene);
-    scene->load();
   }
 }
 
@@ -155,14 +158,31 @@ int Application::render_thread(void *ptr)
   SDL_GL_MakeCurrent(mainwindow, gl_context);
   opengl_core::gl_functions::configure(gl_ver);
 
+  {
+    std::lock_guard<std::mutex> lg(self->scene_lock);
+    if (self->scene != nullptr && not self->scene->loaded()) {
+      self->scene->load();
+    }
+  }
+
   while (self->render.load()) {
     {
       std::lock_guard<std::mutex> lg(self->scene_lock);
       if (self->scene != nullptr) {
-        self->scene->render();
+        int w = 800;
+        int h = 600;
+        SDL_GetWindowSize(mainwindow, &w, &h);
+        self->scene->render(w, h);
       }
     }
     SDL_GL_SwapWindow(mainwindow);
+  }
+
+  {
+    std::lock_guard<std::mutex> lg(self->scene_lock);
+    if (self->scene != nullptr) {
+      self->scene->destroy();
+    }
   }
 
   return EXIT_SUCCESS;

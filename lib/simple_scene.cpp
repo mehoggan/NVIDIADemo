@@ -11,7 +11,7 @@ bool SimpleScene::load()
   return ret;
 }
 
-bool SimpleScene::render()
+bool SimpleScene::render(std::uint16_t, std::uint16_t)
 {
   bool ret = true;
   glClearColor(0.0, 1.0, 0.0, 1.0);
@@ -23,4 +23,9 @@ bool SimpleScene::destroy()
 {
   bool ret = true;
   return ret;
+}
+
+bool SimpleScene::loaded() const
+{
+  return loaded_.load();
 }

@@ -7,8 +7,13 @@ include_directories(${gtest_SOURCE_DIR}/include)
 set(SRC
   ./application.cpp
   ./gl_functions.cpp
+  ./interleaved_vertex_buffer.cpp
   ./iscene.cpp
+  ./resource_loader.cpp
+  ./shader.cpp
+  ./shader_program.cpp
   ./simple_scene.cpp
+  ./square_scene.cpp
 )
 
 if (BUILD_SHARED_LIBS)
@@ -27,8 +32,31 @@ else()
     -fno-strict-aliasing")
 endif()
 
-# We explicitly list boost libraries because of boost beast.
 target_link_libraries(nvidia_demo
+  SDL2-2.0
+  GL
   pthread
 )
 add_dependencies(nvidia_demo gtest)
+
+add_custom_target(
+  always_copy_shaders ALL
+  DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/__header.h
+)
+add_dependencies(always_copy_shaders nvidia_demo)
+
+add_custom_command(
+  OUTPUT
+    ${CMAKE_CURRENT_BINARY_DIR}/__header.h  # fake! ensure we run!
+    ${CMAKE_CURRENT_BINARY_DIR}/header.h    # real header, we write.
+  COMMAND
+    ${CMAKE_COMMAND} -E echo "dummy" > ${CMAKE_CURRENT_BINARY_DIR}/header.h
+)
+
+add_custom_command(TARGET always_copy_shaders
+  COMMENT "Copy shaders adjacent to executable."
+  POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_CURRENT_SOURCE_DIR}/shaders
+    ${CMAKE_BINARY_DIR}/bin/shaders
+)

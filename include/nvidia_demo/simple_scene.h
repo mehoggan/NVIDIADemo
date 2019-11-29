@@ -12,9 +12,11 @@ public:
 
   virtual bool load() override;
 
-  virtual bool render() override;
+  virtual bool render(std::uint16_t width, std::uint16_t height) override;
 
   virtual bool destroy() override;
+
+  virtual bool loaded() const override;
 };
 
 #endif
