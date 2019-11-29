@@ -1,6 +1,7 @@
 #ifndef APPLICATION_H_INCLUDED
 #define APPLICATION_H_INCLUDED
 
+#include "nvidia_demo/gl_functions.h"
 #include "nvidia_demo/iscene.h"
 
 #include <atomic>
@@ -19,7 +20,10 @@
 class Application
 {
 public:
-  Application(const std::string &name, int argc, char **argv);
+  Application(
+    const std::string &name,
+    int argc, char **argv,
+    const opengl_core::gl_version &version);
 
   ~Application();
 
@@ -45,6 +49,7 @@ private:
 
   std::mutex scene_lock;
   std::unique_ptr<IScene> scene;
+  opengl_core::gl_version version_;
 };
 
 #endif

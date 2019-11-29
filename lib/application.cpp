@@ -5,11 +5,12 @@
 
 Application::Application(
   const std::string &name,
-  int,
-  char **argv) :
+  int, char **argv,
+  const opengl_core::gl_version &version) :
   ready(false),
   render(true),
-  running(false)
+  running(false),
+  version_(version)
 {
   std::string exe_path(argv[0]);
   ResourceLoader::exe_path(exe_path.substr(0, exe_path.find_last_of("\\/")));
@@ -150,13 +151,12 @@ int Application::render_thread(void *ptr)
       return self->ready.load();
     }); 
 
-  opengl_core::gl_version gl_ver {3, 2};
-  SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, gl_ver.major);
-  SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, gl_ver.minor);
+  SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, self->version_.major);
+  SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, self->version_.minor);
   SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
   SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
   SDL_GL_MakeCurrent(mainwindow, gl_context);
-  opengl_core::gl_functions::configure(gl_ver);
+  opengl_core::gl_functions::configure(self->version_);
 
   {
     std::lock_guard<std::mutex> lg(self->scene_lock);

@@ -6,8 +6,8 @@
 
 int main(int argc, char* argv[])
 {
-  Application app("NVIDIA Demo", argc, argv);
-  app.set_scene(std::make_unique<SquareScene>(
-    opengl_core::gl_version {3, 2} ));
+  opengl_core::gl_version opengl_version {3, 2};
+  Application app("NVIDIA Demo", argc, argv, opengl_version);
+  app.set_scene(std::make_unique<SquareScene>(opengl_version));
   return app.run();
 }
