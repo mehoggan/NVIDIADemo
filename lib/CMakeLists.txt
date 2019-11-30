@@ -7,12 +7,14 @@ include_directories(${gtest_SOURCE_DIR}/include)
 set(SRC
   ./application.cpp
   ./gl_functions.cpp
+  ./idrawable.cpp
   ./interleaved_vertex_buffer.cpp
   ./iscene.cpp
   ./resource_loader.cpp
   ./shader.cpp
   ./shader_program.cpp
   ./simple_scene.cpp
+  ./simple_triangle.cpp
   ./simpletriangle_scene.cpp
 )
 

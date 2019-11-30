@@ -16,6 +16,11 @@ ShaderProgram::~ShaderProgram()
   GL_CALL(glDeleteProgram)
 }
 
+const GLuint &ShaderProgram::id() const
+{
+  return id_;
+}
+
 void ShaderProgram::add_shader(const std::unique_ptr<Shader> &shader)
 {
   glAttachShader(id_, shader->id());
@@ -44,9 +49,25 @@ void ShaderProgram::use() const
   GL_CALL(glUseProgram);
 }
 
-const GLuint &ShaderProgram::id() const
+void ShaderProgram::activate_attribute(
+  const std::string &attr,
+  std::size_t attr_index,
+  const InterleavedVertexBuffer &attributes) const
 {
-  return id_;
+  InterleavedVertexBuffer::AttributeProperties properties;
+  attributes.properties(attr_index, properties);
+  GLint size = properties.size;
+  GLsizei stride = properties.stride;
+  void *offset = properties.offset;
+
+  GLint pos = glGetAttribLocation(id_, attr.c_str());
+  GL_CALL(glGetAttribLocation)
+
+  glEnableVertexAttribArray(pos);
+  GL_CALL(glEnableVertexAttribArray)
+
+  glVertexAttribPointer(pos, size, GL_FLOAT, GL_FALSE, stride, offset);
+  GL_CALL(glVertexAttribPointer)
 }
 
 bool ShaderProgram::linker_errors(GLuint program_id, std::string &out_errors)

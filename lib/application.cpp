@@ -41,12 +41,12 @@ void Application::set_scene(std::unique_ptr<IScene> &&client_scene)
 {
   {
     std::lock_guard<std::mutex> lg(scene_lock);
-    if (scene != nullptr) {
-      scene->destroy();
-      scene.reset(nullptr);
+    if (scene_ != nullptr) {
+      scene_->destroy();
+      scene_.reset(nullptr);
     }
 
-    scene = std::move(client_scene);
+    scene_ = std::move(client_scene);
   }
 }
 
@@ -54,9 +54,9 @@ void Application::clear_scene()
 {
   {
     std::lock_guard<std::mutex> lg(scene_lock);
-    if (scene != nullptr) {
-      scene->destroy();
-      scene.reset(nullptr);
+    if (scene_ != nullptr) {
+      scene_->destroy();
+      scene_.reset(nullptr);
     }
   }
 }
@@ -160,19 +160,19 @@ int Application::render_thread(void *ptr)
 
   {
     std::lock_guard<std::mutex> lg(self->scene_lock);
-    if (self->scene != nullptr && not self->scene->loaded()) {
-      self->scene->load();
+    if (self->scene_ != nullptr && not self->scene_->loaded()) {
+      self->scene_->load();
     }
   }
 
   while (self->render.load()) {
     {
       std::lock_guard<std::mutex> lg(self->scene_lock);
-      if (self->scene != nullptr) {
+      if (self->scene_ != nullptr) {
         int w = 800;
         int h = 600;
         SDL_GetWindowSize(mainwindow, &w, &h);
-        self->scene->render(w, h);
+        self->scene_->render(w, h);
       }
     }
     SDL_GL_SwapWindow(mainwindow);
@@ -180,8 +180,8 @@ int Application::render_thread(void *ptr)
 
   {
     std::lock_guard<std::mutex> lg(self->scene_lock);
-    if (self->scene != nullptr) {
-      self->scene->destroy();
+    if (self->scene_ != nullptr) {
+      self->scene_->destroy();
     }
   }
 

@@ -10,6 +10,14 @@ public:
 
   virtual ~SimpleScene();
 
+  SimpleScene(const SimpleScene &) = delete;
+
+  SimpleScene &operator=(const SimpleScene &) = delete;
+
+  SimpleScene(SimpleScene &&) = delete;
+
+  SimpleScene &operator=(SimpleScene &&) = delete;
+
   virtual bool load() override;
 
   virtual bool render(std::uint16_t width, std::uint16_t height) override;

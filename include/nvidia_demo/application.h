@@ -13,8 +13,6 @@
 #include <string>
 #include <memory>
 
-#include <GL/gl.h>
-
 #include <SDL.h>
 
 class Application
@@ -26,6 +24,14 @@ public:
     const opengl_core::gl_version &version);
 
   ~Application();
+
+  Application(const Application &) = delete;
+
+  Application &operator=(const Application &) = delete;
+
+  Application(Application &&) = delete;
+
+  Application &operator=(Application &&) = delete;
 
   void set_scene(std::unique_ptr<IScene> &&client_scene);
 
@@ -48,7 +54,7 @@ private:
   SDL_Thread *thread;
 
   std::mutex scene_lock;
-  std::unique_ptr<IScene> scene;
+  std::unique_ptr<IScene> scene_;
   opengl_core::gl_version version_;
 };
 

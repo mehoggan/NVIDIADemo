@@ -21,6 +21,13 @@ public:
     DYNAMIC_COPY
   };
 
+  struct AttributeProperties
+  {
+    GLint size;
+    GLsizei stride;
+    void *offset;
+  };
+
 public:
   InterleavedVertexBuffer(const std::vector<glm::vec2> &attributes,
       const Usage &usage);
@@ -32,18 +39,24 @@ public:
   InterleavedVertexBuffer &operator=(const InterleavedVertexBuffer &)
     = delete;
 
-  InterleavedVertexBuffer(const InterleavedVertexBuffer &&) = delete;
+  InterleavedVertexBuffer(InterleavedVertexBuffer &&) = delete;
 
-  InterleavedVertexBuffer &operator=(const InterleavedVertexBuffer &&)
-    = delete;
+  InterleavedVertexBuffer &operator=(InterleavedVertexBuffer &&) = delete;
 
   const Usage &usage() const;
 
   void use() const;
 
+  void properties(
+    std::size_t attr_index,
+    AttributeProperties &out_props) const;
+
 private:
   GLuint id_;
   Usage usage_;
+  std::vector<GLint> sizes_;
+  std::vector<GLsizei> strides_;
+  std::vector<void *> offsets_;
 };
 
 #endif
