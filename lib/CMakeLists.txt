@@ -6,6 +6,7 @@ include_directories(${gtest_SOURCE_DIR}/include)
 
 set(SRC
   ./application.cpp
+  ./flashing_triangle.cpp
   ./gl_functions.cpp
   ./idrawable.cpp
   ./interleaved_vertex_buffer.cpp

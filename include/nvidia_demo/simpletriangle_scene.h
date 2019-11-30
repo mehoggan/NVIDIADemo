@@ -2,7 +2,7 @@
 #define SQUARE_SCENE_H_INCLUDED
 
 #include "nvidia_demo/iscene.h"
-#include "nvidia_demo/simple_triangle.h"
+#include "nvidia_demo/flashing_triangle.h"
 
 #include <memory>
 
@@ -30,7 +30,7 @@ public:
   virtual bool loaded() const override;
 
 private:
-  std::unique_ptr<SimpleTriangle> triangle_;
+  std::unique_ptr<FlashingTriangle> triangle_;
 };
 
 #endif

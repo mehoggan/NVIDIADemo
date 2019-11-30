@@ -16,7 +16,7 @@ bool SimpleTriangleScene::load()
 {
   bool ret = true;
 
-  triangle_.reset(new SimpleTriangle(version_));
+  triangle_.reset(new FlashingTriangle(version_));
   triangle_->load();
 
   loaded_.store(true);

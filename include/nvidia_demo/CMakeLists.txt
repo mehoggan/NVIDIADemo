@@ -1,6 +1,7 @@
 install(FILES
   ./application.h
   ./declspec.h
+  ./flashing_triangle.h
   ./gl_functions.h
   ./idrawable.h
   ./interleaved_vertex_buffer.h
