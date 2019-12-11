@@ -11,6 +11,8 @@ set(SRC
   ./idrawable.cpp
   ./interleaved_vertex_buffer.cpp
   ./iscene.cpp
+  ./rainbow_square.cpp
+  ./rainbowsquare_scene.cpp
   ./resource_loader.cpp
   ./shader.cpp
   ./shader_program.cpp

@@ -7,6 +7,8 @@ install(FILES
   ./interleaved_vertex_buffer.h
   ./iscene.h
   ./platform.h
+  ./rainbow_square.h
+  ./rainbowsquare_scene.h
   ./shader.h
   ./shader_program.h
   ./simple_scene.h
