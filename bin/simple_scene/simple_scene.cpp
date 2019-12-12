@@ -1,4 +1,4 @@
-#include <nvidia_demo/simple_scene.h>
+#include "simple_scene.h"
 
 #include "nvidia_demo/gl_functions.h"
 

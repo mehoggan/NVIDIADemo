@@ -2,13 +2,7 @@ cmake_minimum_required(VERSION 3.0.2)
 include_directories(../)
 include_directories(../include/)
 
-set(SRC
-  main.cpp
-)
-
-add_executable(nvidia_demo_runner ${SRC})
-
-target_link_libraries(nvidia_demo_runner
-  nvidia_demo
-  pthread
-)
+add_subdirectory(./rainbowsquare_scene)
+add_subdirectory(./simple_scene)
+add_subdirectory(./simpletriangle_scene)
+# add_subdirectory(./texturedsquare_scene)

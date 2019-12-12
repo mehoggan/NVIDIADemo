@@ -1,4 +1,4 @@
-#include "nvidia_demo/flashing_triangle.h"
+#include "flashing_triangle.h"
 
 #include "nvidia_demo/resource_loader.h"
 

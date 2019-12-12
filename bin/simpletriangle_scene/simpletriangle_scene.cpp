@@ -1,4 +1,4 @@
-#include "nvidia_demo/simpletriangle_scene.h"
+#include "simpletriangle_scene.h"
 
 #include "nvidia_demo/gl_functions.h"
 

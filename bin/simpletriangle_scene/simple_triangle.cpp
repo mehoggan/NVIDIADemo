@@ -1,4 +1,4 @@
-#include "nvidia_demo/simple_triangle.h"
+#include "simple_triangle.h"
 
 #include "nvidia_demo/resource_loader.h"
 

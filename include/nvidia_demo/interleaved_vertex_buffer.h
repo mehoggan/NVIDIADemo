@@ -57,7 +57,8 @@ public:
   };
 
 public:
-  InterleavedVertexBuffer(const std::vector<Supported::Vec2> &attributes,
+  InterleavedVertexBuffer(
+    const std::vector<Supported::Vec2> &attributes,
     const Usage &usage);
 
   InterleavedVertexBuffer(
