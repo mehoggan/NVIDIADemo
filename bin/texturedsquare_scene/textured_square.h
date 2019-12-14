@@ -6,23 +6,24 @@
 #include "nvidia_demo/interleaved_vertex_buffer.h"
 #include "nvidia_demo/shader.h"
 #include "nvidia_demo/shader_program.h"
+#include "nvidia_demo/textures.h"
 
 #include <memory>
 
-class RainbowSquare : public IDrawable
+class TexturedSquare : public IDrawable
 {
 public:
-  explicit RainbowSquare(const opengl_core::gl_version &version);
+  explicit TexturedSquare(const opengl_core::gl_version &version);
 
-  virtual ~RainbowSquare();
+  virtual ~TexturedSquare();
 
-  RainbowSquare(const RainbowSquare &) = delete;
+  TexturedSquare(const TexturedSquare &) = delete;
 
-  RainbowSquare &operator=(const RainbowSquare &) = delete;
+  TexturedSquare &operator=(const TexturedSquare &) = delete;
 
-  RainbowSquare(RainbowSquare &&) = delete;
+  TexturedSquare(TexturedSquare &&) = delete;
 
-  RainbowSquare &operator=(RainbowSquare &&) = delete;
+  TexturedSquare &operator=(TexturedSquare &&) = delete;
 
   virtual bool load() override;
 
@@ -36,6 +37,7 @@ private:
   std::unique_ptr<Shader> vertex_shader_;
   std::unique_ptr<Shader> fragment_shader_;
   std::unique_ptr<ShaderProgram> shader_program_;
+  std::unique_ptr<Textures> textures_;
 };
 
 #endif

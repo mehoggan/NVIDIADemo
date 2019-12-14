@@ -13,6 +13,7 @@ set(SRC
   ./resource_loader.cpp
   ./shader.cpp
   ./shader_program.cpp
+  ./textures.cpp
 )
 
 if (BUILD_SHARED_LIBS)
@@ -33,6 +34,7 @@ endif()
 
 target_link_libraries(nvidia_demo
   SDL2-2.0
+  png
   GL
   pthread
 )

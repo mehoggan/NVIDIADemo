@@ -92,7 +92,6 @@ InterleavedVertexBuffer::InterleavedVertexBuffer(
   offsets_.push_back((void *)0);
 }
 
-
 InterleavedVertexBuffer::InterleavedVertexBuffer(
   const std::vector<Supported::Vec2Col3> &attributes,
   const std::vector<Supported::Integer> &indices,
@@ -115,6 +114,38 @@ InterleavedVertexBuffer::InterleavedVertexBuffer(
   strides_.push_back(5 * sizeof(GLfloat));
   offsets_.push_back((void *)0);
   offsets_.push_back((void *)(2 * sizeof(GLfloat)));
+
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, index_id_);
+  GL_CALL(glBindBuffer)
+
+  detail::load_indices<Supported::Integer>(indices, usage);
+}
+
+InterleavedVertexBuffer::InterleavedVertexBuffer(
+  const std::vector<Supported::Vec2Col3Tex2> &attributes,
+  const std::vector<Supported::Integer> &indices,
+  const Usage &usage)
+{
+  if (attributes.empty()) {
+    throw std::runtime_error("Cannot create vertex buffer from no data.");
+  }
+
+  glGenBuffers(1, &id_);
+  GL_CALL(glGenBuffers)
+
+  glBindBuffer(GL_ARRAY_BUFFER, id_);
+  GL_CALL(glBindBuffer)
+
+  detail::load<Supported::Vec2Col3Tex2>(attributes, usage);
+  sizes_.push_back(2);
+  sizes_.push_back(3);
+  sizes_.push_back(2);
+  strides_.push_back(7 * sizeof(GLfloat));
+  strides_.push_back(7 * sizeof(GLfloat));
+  strides_.push_back(7 * sizeof(GLfloat));
+  offsets_.push_back((void *)0);
+  offsets_.push_back((void *)(2 * sizeof(GLfloat)));
+  offsets_.push_back((void *)(5 * sizeof(GLfloat)));
 
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, index_id_);
   GL_CALL(glBindBuffer)

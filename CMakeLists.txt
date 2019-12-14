@@ -18,6 +18,8 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/c++17.cmake)
 include_directories(${gtest_SOURCE_DIR}/include)
 include_directories(${CMAKE_BINARY_DIR}/googletest-src/googletest/include)
 
+find_package(PNG REQUIRED)
+
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.libsdl.txt.in
   ${CMAKE_BINARY_DIR}/libsdl-download/CMakeLists.txt)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/libsdl.cmake)

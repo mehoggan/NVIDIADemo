@@ -1,22 +1,22 @@
-#include "nvidia_demo/rainbowsquare_scene.h"
+#include "texturedsquare_scene.h"
 
 #include "nvidia_demo/gl_functions.h"
 
 #include <iostream>
 
-RainbowSquareScene::RainbowSquareScene(
+TexturedSquareScene::TexturedSquareScene(
   const opengl_core::gl_version &version) :
   IScene(version)
 {}
 
-RainbowSquareScene::~RainbowSquareScene()
+TexturedSquareScene::~TexturedSquareScene()
 {}
 
-bool RainbowSquareScene::load()
+bool TexturedSquareScene::load()
 {
   bool ret = true;
 
-  square_.reset(new RainbowSquare(version_));
+  square_.reset(new TexturedSquare(version_));
   square_->load();
 
   loaded_.store(true);
@@ -24,7 +24,7 @@ bool RainbowSquareScene::load()
   return ret;
 }
 
-bool RainbowSquareScene::render(std::uint16_t width, std::uint16_t height)
+bool TexturedSquareScene::render(std::uint16_t width, std::uint16_t height)
 {
   bool ret = true;
 
@@ -47,13 +47,13 @@ bool RainbowSquareScene::render(std::uint16_t width, std::uint16_t height)
   return ret;
 }
 
-bool RainbowSquareScene::destroy()
+bool TexturedSquareScene::destroy()
 {
   bool ret = true;
   return ret;
 }
 
-bool RainbowSquareScene::loaded() const
+bool TexturedSquareScene::loaded() const
 {
   return loaded_.load();
 }

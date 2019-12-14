@@ -1,25 +1,26 @@
 #ifndef RAINBOW_SQUARE_SCENE_H_INCLUDED
 #define RAINBOW_SQUARE_SCENE_H_INCLUDED
 
+#include "textured_square.h"
+
 #include "nvidia_demo/iscene.h"
-#include "nvidia_demo/rainbow_square.h"
 
 #include <memory>
 
-class RainbowSquareScene : public IScene
+class TexturedSquareScene : public IScene
 {
 public:
-  RainbowSquareScene(const opengl_core::gl_version& version);
+  TexturedSquareScene(const opengl_core::gl_version& version);
 
-  virtual ~RainbowSquareScene();
+  virtual ~TexturedSquareScene();
 
-  RainbowSquareScene(const RainbowSquareScene &) = delete;
+  TexturedSquareScene(const TexturedSquareScene &) = delete;
 
-  RainbowSquareScene &operator=(const RainbowSquareScene &) = delete;
+  TexturedSquareScene &operator=(const TexturedSquareScene &) = delete;
 
-  RainbowSquareScene(RainbowSquareScene &&) = delete;
+  TexturedSquareScene(TexturedSquareScene &&) = delete;
 
-  RainbowSquareScene &operator=(RainbowSquareScene &&) = delete;
+  TexturedSquareScene &operator=(TexturedSquareScene &&) = delete;
 
   virtual bool load() override;
 
@@ -30,7 +31,7 @@ public:
   virtual bool loaded() const override;
 
 private:
-  std::unique_ptr<RainbowSquare> square_;
+  std::unique_ptr<TexturedSquare> square_;
 };
 
 #endif

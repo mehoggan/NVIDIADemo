@@ -8,5 +8,6 @@ install(FILES
   ./platform.h
   ./shader.h
   ./shader_program.h
+  ./textures.h
   DESTINATION include/nvidia_demo
 )

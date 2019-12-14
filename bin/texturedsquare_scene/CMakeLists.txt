@@ -39,3 +39,20 @@ add_custom_command(TARGET always_copy_shaders_texturedsquare_scene
     ${CMAKE_CURRENT_SOURCE_DIR}/shaders
     ${CMAKE_BINARY_DIR}/bin/texturedsquare_scene/shaders
 )
+
+add_custom_target(
+  always_copy_textures_texturedsquare_scene ALL
+  DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/__header.h
+)
+add_dependencies(
+  always_copy_textures_texturedsquare_scene
+  texturedsquare_scene
+)
+
+add_custom_command(TARGET always_copy_textures_texturedsquare_scene
+  COMMENT "Copy textures adjacent to executable."
+  POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_CURRENT_SOURCE_DIR}/textures
+    ${CMAKE_BINARY_DIR}/bin/texturedsquare_scene/textures
+)

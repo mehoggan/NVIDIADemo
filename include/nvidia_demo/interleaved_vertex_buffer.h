@@ -19,6 +19,13 @@ namespace Supported
     Vec3 col_;
   };
 
+  struct Vec2Col3Tex2
+  {
+    Vec2 pos_;
+    Vec3 col_;
+    Vec2 tex_;
+  };
+
   typedef std::uint8_t uByte;
 
   typedef std::uint16_t uShort;
@@ -63,6 +70,11 @@ public:
 
   InterleavedVertexBuffer(
     const std::vector<Supported::Vec2Col3> &attributes,
+    const std::vector<Supported::Integer> &indices,
+    const Usage &usage);
+
+  InterleavedVertexBuffer(
+    const std::vector<Supported::Vec2Col3Tex2> &attributes,
     const std::vector<Supported::Integer> &indices,
     const Usage &usage);
 
