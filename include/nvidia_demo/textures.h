@@ -36,25 +36,60 @@ public:
     TEXTURE_WRAP_R
   };
 
-  template <typename T>
-  struct ImageConfig
+  struct ImageConfigi
   {
   public:
-    ImageConfig(const ParameterName &pname, const T &param);
+    ImageConfigi(const ParameterName &pname, const int &param);
 
     GLenum gl_pname() const;
 
     const ParameterName &pname() const;
 
-    const T &param() const;
+    const int &param() const;
 
   private:
     ParameterName pname_;
-    T param_;
+    int param_;
+  };
+
+  struct ImageConfigf
+  {
+  public:
+    ImageConfigf(const ParameterName &pname, const float &param);
+
+    GLenum gl_pname() const;
+
+    const ParameterName &pname() const;
+
+    const float &param() const;
+
+  private:
+    ParameterName pname_;
+    float param_;
+  };
+
+  class ImageWithConfig
+  {
+  public:
+    ImageWithConfig(
+      const std::string &relative_path,
+      const std::vector<ImageConfigi> &configi,
+      const std::vector<ImageConfigf> &configf);
+
+    const std::string &relative_path() const;
+
+    const std::vector<ImageConfigi> &configi() const;
+
+    const std::vector<ImageConfigf> &configf() const;
+
+  private:
+    std::string relative_path_;
+    std::vector<ImageConfigi> configi_;
+    std::vector<ImageConfigf> configf_;
   };
 
 public:
-  Textures(const std::vector<std::string> &relative_paths);
+  Textures(const std::vector<ImageWithConfig> &images);
 
   ~Textures();
 

@@ -55,7 +55,54 @@ bool TexturedSquare::load()
   shader_program_->add_shader(fragment_shader_);
   shader_program_->link();
 
-  textures_.reset(new Textures({ "cat.png", "dog.png" }));
+  textures_.reset(new Textures({
+    {
+      "cat.png",
+      {
+        Textures::ImageConfigi {
+          Textures::ParameterName::TEXTURE_WRAP_S,
+          GL_CLAMP_TO_EDGE
+        },
+        Textures::ImageConfigi {
+          Textures::ParameterName::TEXTURE_WRAP_T,
+          GL_CLAMP_TO_EDGE
+        },
+        Textures::ImageConfigi {
+          Textures::ParameterName::TEXTURE_MIN_FILTER,
+          GL_LINEAR
+        },
+        Textures::ImageConfigi {
+          Textures::ParameterName::TEXTURE_MAG_FILTER,
+          GL_LINEAR
+        },
+      },
+      {
+      }
+    },
+    {
+      "dog.png",
+      {
+        Textures::ImageConfigi {
+          Textures::ParameterName::TEXTURE_WRAP_S,
+          GL_CLAMP_TO_EDGE
+        },
+        Textures::ImageConfigi {
+          Textures::ParameterName::TEXTURE_WRAP_T,
+          GL_CLAMP_TO_EDGE
+        },
+        Textures::ImageConfigi {
+          Textures::ParameterName::TEXTURE_MIN_FILTER,
+          GL_LINEAR
+        },
+        Textures::ImageConfigi {
+          Textures::ParameterName::TEXTURE_MAG_FILTER,
+          GL_LINEAR
+        },
+      },
+      {
+      }
+    }
+  }));
 
   return ret;
 }
