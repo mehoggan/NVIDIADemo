@@ -1,5 +1,5 @@
-#ifndef RAINDBOW_SQUARE_H_INCLUDED
-#define RAINDBOW_SQUARE_H_INCLUDED
+#ifndef RAINBOW_SQUARE_H_INCLUDED
+#define RAINBOW_SQUARE_H_INCLUDED
 
 #include "nvidia_demo/idrawable.h"
 

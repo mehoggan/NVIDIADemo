@@ -6,13 +6,16 @@ include_directories(${gtest_SOURCE_DIR}/include)
 
 set(SRC
   ./application.cpp
+  ./camera.cpp
   ./gl_functions.cpp
   ./idrawable.cpp
   ./interleaved_vertex_buffer.cpp
   ./iscene.cpp
+  ./itransformable.cpp
   ./resource_loader.cpp
   ./shader.cpp
   ./shader_program.cpp
+  ./stream_helpers.cpp
   ./textures.cpp
 )
 

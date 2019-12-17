@@ -1,5 +1,5 @@
-#ifndef GL_FUNCTIONS_HPP_INCLUDED
-#define GL_FUNCTIONS_HPP_INCLUDED
+#ifndef GL_FUNCTIONS_H_INCLUDED
+#define GL_FUNCTIONS_H_INCLUDED
 
 #include "declspec.h"
 

@@ -3,6 +3,7 @@ include_directories(../)
 include_directories(../include/)
 
 add_subdirectory(./rainbowsquare_scene)
+add_subdirectory(./rotatingtexturedsquare_scene)
 add_subdirectory(./simple_scene)
 add_subdirectory(./simpletriangle_scene)
 add_subdirectory(./texturedsquare_scene)

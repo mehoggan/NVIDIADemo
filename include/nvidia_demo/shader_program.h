@@ -169,47 +169,47 @@ public:
   void set_uniform_matrix2fv(
     GLint uniform_id,
     const glm::mat2 &m,
-    bool trans);
+    bool trans = false);
 
   void set_uniform_matrix3fv(
     GLint uniform_id,
     const glm::mat3 &m,
-    bool trans);
+    bool trans = false);
    
   void set_uniform_matrix4fv(
     GLint uniform_id,
     const glm::mat4 &m,
-    bool trans);
+    bool trans = false);
 
   void set_uniform_matrix_2x3fv(
     GLint uniform_id,
     const glm::mat2x3 &m,
-    bool trans);
+    bool trans = false);
 
   void set_uniform_matrix_3x2fv(
     GLint uniform_id,
     const glm::mat3x2 &m,
-    bool trans);
+    bool trans = false);
 
   void set_uniform_matrix_2x4fv(
     GLint uniform_id,
     const glm::mat2x4 &m,
-    bool trans);
+    bool trans = false);
 
   void set_uniform_matrix_4x2fv(
     GLint uniform_id,
     const glm::mat4x2 &m,
-    bool trans);
+    bool trans = false);
 
   void set_uniform_matrix_3x4fv(
     GLint uniform_id,
     const glm::mat3x4 &m,
-    bool trans);
+    bool trans = false);
 
   void set_uniform_matrix_4x3fv(
     GLint uniform_id,
     const glm::mat4x3 &m,
-    bool trans);
+    bool trans = false);
 
 private:
   static bool linker_errors(GLuint program_id, std::string &out_errors);
