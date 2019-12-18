@@ -10,6 +10,7 @@ set(SRC
   ./gl_functions.cpp
   ./idrawable.cpp
   ./interleaved_vertex_buffer.cpp
+  ./irenderable.cpp
   ./iscene.cpp
   ./itransformable.cpp
   ./resource_loader.cpp
@@ -17,6 +18,7 @@ set(SRC
   ./shader_program.cpp
   ./stream_helpers.cpp
   ./textures.cpp
+  ./triangle.cpp
 )
 
 if (BUILD_SHARED_LIBS)
@@ -42,3 +44,28 @@ target_link_libraries(nvidia_demo
   pthread
 )
 add_dependencies(nvidia_demo gtest)
+
+add_custom_target(
+  always_copy_lib_shaders ALL
+  DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/__header.h
+)
+add_dependencies(
+  always_copy_lib_shaders
+  nvidia_demo
+)
+
+add_custom_command(
+  OUTPUT
+    ${CMAKE_CURRENT_BINARY_DIR}/__header.h  # fake! ensure we run!
+    ${CMAKE_CURRENT_BINARY_DIR}/header.h    # real header, we write.
+  COMMAND
+    ${CMAKE_COMMAND} -E echo "dummy" > ${CMAKE_CURRENT_BINARY_DIR}/header.h
+)
+
+add_custom_command(TARGET always_copy_lib_shaders
+  COMMENT "Copy shaders adjacent to executable."
+  POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_CURRENT_SOURCE_DIR}/shaders
+    ${CMAKE_BINARY_DIR}/bin/shaders
+)

@@ -19,9 +19,22 @@ namespace Supported
     Vec3 col_;
   };
 
+  struct Vec3Col3
+  {
+    Vec3 pos_;
+    Vec3 col_;
+  };
+
   struct Vec2Col3Tex2
   {
     Vec2 pos_;
+    Vec3 col_;
+    Vec2 tex_;
+  };
+
+  struct Vec3Col3Tex2
+  {
+    Vec3 pos_;
     Vec3 col_;
     Vec2 tex_;
   };
@@ -69,12 +82,25 @@ public:
     const Usage &usage);
 
   InterleavedVertexBuffer(
+    const std::vector<Supported::Vec3Col3> &attributes,
+    const Usage &usage);
+
+  InterleavedVertexBuffer(
     const std::vector<Supported::Vec2Col3> &attributes,
     const std::vector<Supported::Integer> &indices,
     const Usage &usage);
 
   InterleavedVertexBuffer(
     const std::vector<Supported::Vec2Col3Tex2> &attributes,
+    const std::vector<Supported::Integer> &indices,
+    const Usage &usage);
+
+  InterleavedVertexBuffer(
+    const std::vector<Supported::Vec3Col3Tex2> &attributes,
+    const Usage &usage);
+
+  InterleavedVertexBuffer(
+    const std::vector<Supported::Vec3Col3Tex2> &attributes,
     const std::vector<Supported::Integer> &indices,
     const Usage &usage);
 

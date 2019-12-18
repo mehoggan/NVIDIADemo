@@ -44,6 +44,7 @@ bool SimpleTriangle::load()
 bool SimpleTriangle::draw()
 {
   bool ret = true;
+
   attributes_->use();
   shader_program_->use();
   shader_program_->activate_attribute("position", 0ull, *(attributes_.get()));

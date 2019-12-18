@@ -5,6 +5,7 @@ install(FILES
   ./gl_functions.h
   ./idrawable.h
   ./interleaved_vertex_buffer.h
+  ./irenderable.h
   ./iscene.h
   ./itransformable.h
   ./platform.h
@@ -12,5 +13,6 @@ install(FILES
   ./shader_program.h
   ./stream_helpers.h
   ./textures.h
+  ./triangle.h
   DESTINATION include/nvidia_demo
 )

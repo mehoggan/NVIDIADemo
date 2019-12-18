@@ -5,6 +5,7 @@
 #include "simple_triangle.h"
 
 #include "nvidia_demo/iscene.h"
+#include "nvidia_demo/triangle.h"
 
 #include <memory>
 
@@ -32,7 +33,7 @@ public:
   virtual bool loaded() const override;
 
 private:
-  std::unique_ptr<FlashingTriangle> triangle_;
+  std::unique_ptr<Triangle> triangle_;
 };
 
 #endif

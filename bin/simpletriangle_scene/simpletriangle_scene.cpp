@@ -16,8 +16,21 @@ bool SimpleTriangleScene::load()
 {
   bool ret = true;
 
-  triangle_.reset(new FlashingTriangle(version_));
-  triangle_->load();
+  triangle_.reset(new Triangle(version_));
+
+  std::unique_ptr<InterleavedVertexBuffer> attributes;
+  attributes.reset(
+    new InterleavedVertexBuffer({
+      glm::vec2 { +0.0f, +0.5f },
+      glm::vec2 { +0.5f, -0.5f },
+      glm::vec2 { -0.5f, -0.5f }},
+      InterleavedVertexBuffer::Usage::STATIC_DRAW
+    )
+  );
+  triangle_->load(
+    std::move(attributes),
+    "simple_triangle.vert",
+    "simple_triangle.frag");
 
   loaded_.store(true);
 
