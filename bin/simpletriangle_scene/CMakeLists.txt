@@ -3,9 +3,7 @@ include_directories(../../)
 include_directories(../../include/)
 
 set(SRC
-  ./flashing_triangle.cpp
   ./main.cpp
-  ./simple_triangle.cpp
   ./simpletriangle_scene.cpp
 )
 

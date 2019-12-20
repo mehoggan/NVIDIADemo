@@ -1,9 +1,6 @@
 #ifndef SQUARE_SCENE_H_INCLUDED
 #define SQUARE_SCENE_H_INCLUDED
 
-#include "flashing_triangle.h"
-#include "simple_triangle.h"
-
 #include "nvidia_demo/iscene.h"
 #include "nvidia_demo/triangle.h"
 

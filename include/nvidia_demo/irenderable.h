@@ -27,20 +27,6 @@ public:
 
   virtual bool load() = 0;
 
-  virtual bool load(
-    std::unique_ptr<InterleavedVertexBuffer> &&attributes) = 0;
-
-  virtual bool load(
-    std::unique_ptr<InterleavedVertexBuffer> &&attributes,
-    const std::string &vertex_shader_filename,
-    const std::string &fragment_shader_filename) = 0;
-
-  virtual bool load(
-    std::unique_ptr<InterleavedVertexBuffer> &&attributes,
-    const std::string &vertex_shader_filename,
-    const std::string &fragment_shader_filename,
-    std::unique_ptr<Textures> &&textures) = 0;
-
   virtual bool draw() = 0;
 
   virtual bool destroy() = 0;
