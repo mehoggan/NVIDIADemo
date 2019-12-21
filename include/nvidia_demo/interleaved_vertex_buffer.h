@@ -19,6 +19,12 @@ namespace Supported
     Vec3 col_;
   };
 
+  struct Vec3Tex2
+  {
+    Vec3 pos_;
+    Vec2 tex_;
+  };
+
   struct Vec3Col3
   {
     Vec3 pos_;
@@ -83,6 +89,10 @@ public:
 
   InterleavedVertexBuffer(
     const std::vector<Supported::Vec3Col3> &attributes,
+    const Usage &usage);
+
+  InterleavedVertexBuffer(
+    const std::vector<Supported::Vec3Tex2> &attributes,
     const Usage &usage);
 
   InterleavedVertexBuffer(

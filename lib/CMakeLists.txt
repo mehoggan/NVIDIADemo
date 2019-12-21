@@ -17,6 +17,7 @@ set(SRC
   ./shader.cpp
   ./shader_program.cpp
   ./stream_helpers.cpp
+  ./textured_triangle.cpp
   ./textures.cpp
   ./triangle.cpp
 )
@@ -68,4 +69,21 @@ add_custom_command(TARGET always_copy_lib_shaders
   COMMAND ${CMAKE_COMMAND} -E copy_directory
     ${CMAKE_CURRENT_SOURCE_DIR}/shaders
     ${CMAKE_BINARY_DIR}/bin/shaders
+)
+
+add_custom_target(
+  always_copy_lib_textures ALL
+  DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/__header.h
+)
+add_dependencies(
+  always_copy_lib_textures
+  nvidia_demo
+)
+
+add_custom_command(TARGET always_copy_lib_textures
+  COMMENT "Copy textures adjacent to executable."
+  POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_CURRENT_SOURCE_DIR}/textures
+    ${CMAKE_BINARY_DIR}/bin/textures
 )
