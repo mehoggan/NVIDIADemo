@@ -18,6 +18,7 @@ set(SRC
   ./shader_program.cpp
   ./square.cpp
   ./stream_helpers.cpp
+  ./textured_square.cpp
   ./textured_triangle.cpp
   ./textures.cpp
   ./triangle.cpp

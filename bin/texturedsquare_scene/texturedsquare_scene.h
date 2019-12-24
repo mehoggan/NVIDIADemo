@@ -1,7 +1,7 @@
 #ifndef TEXTURED_SQUARE_SCENE_H_INCLUDED
 #define TEXTURED_SQUARE_SCENE_H_INCLUDED
 
-#include "textured_square.h"
+#include "nvidia_demo/textured_square.h"
 
 #include "nvidia_demo/iscene.h"
 

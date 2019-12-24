@@ -4,7 +4,6 @@ include_directories(../../include/)
 
 set(SRC
   ./main.cpp
-  ./textured_square.cpp
   ./texturedsquare_scene.cpp
 )
 

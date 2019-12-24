@@ -54,6 +54,7 @@ bool TexturedTriangle::draw()
 
   glDrawArrays(GL_TRIANGLES, 0, 3);
   GL_CALL(glDrawArrays)
+
   return ret;
 }
 

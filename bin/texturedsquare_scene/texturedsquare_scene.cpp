@@ -16,8 +16,37 @@ bool TexturedSquareScene::load()
 {
   bool ret = true;
 
+  std::unique_ptr<Textures> textures(new Textures({
+    {
+      "dog.png",
+      {
+        Textures::ImageConfigi {
+          Textures::ParameterName::TEXTURE_WRAP_S,
+          GL_CLAMP_TO_EDGE
+        },
+        Textures::ImageConfigi {
+          Textures::ParameterName::TEXTURE_WRAP_T,
+          GL_CLAMP_TO_EDGE
+        },
+        Textures::ImageConfigi {
+          Textures::ParameterName::TEXTURE_MIN_FILTER,
+          GL_LINEAR
+        },
+        Textures::ImageConfigi {
+          Textures::ParameterName::TEXTURE_MAG_FILTER,
+          GL_LINEAR
+        },
+      },
+      {
+      }
+    }
+  }));
+
   square_.reset(new TexturedSquare(version_));
-  square_->load();
+  square_->load(
+    "textured_square.vert",
+    "textured_square.frag",
+    std::move(textures));
 
   loaded_.store(true);
 

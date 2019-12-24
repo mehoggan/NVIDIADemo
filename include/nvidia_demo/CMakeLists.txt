@@ -13,6 +13,7 @@ install(FILES
   ./shader_program.h
   ./square.h
   ./stream_helpers.h
+  ./textured_square.h
   ./textured_triangle.h
   ./textures.h
   ./triangle.h
