@@ -22,7 +22,7 @@ TexturedTriangle::TexturedTriangle(const opengl_core::gl_version &version) :
 
 TexturedTriangle::TexturedTriangle(
   const opengl_core::gl_version &version,
-  std::array<BaseAttributes_t, 3> &vertices) :
+  const std::array<BaseAttributes_t, 3> &vertices) :
   IRenderable(version),
   vertices_(vertices)
 {}

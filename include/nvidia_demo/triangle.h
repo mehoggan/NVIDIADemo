@@ -15,9 +15,17 @@ public:
 
   Triangle(
     const opengl_core::gl_version &version,
-    std::array<BaseAttributes_t, 3> &vertices);
+    const std::array<BaseAttributes_t, 3> &vertices);
 
   virtual ~Triangle();
+
+  Triangle(const Triangle &) = delete;
+
+  Triangle &operator=(const Triangle &) = delete;
+
+  Triangle(Triangle &&) = delete;
+
+  Triangle &operator=(Triangle &&) = delete;
 
   virtual bool load() override;
 

@@ -16,10 +16,12 @@ set(SRC
   ./resource_loader.cpp
   ./shader.cpp
   ./shader_program.cpp
+  ./square.cpp
   ./stream_helpers.cpp
   ./textured_triangle.cpp
   ./textures.cpp
   ./triangle.cpp
+  ./triangle_stream.cpp
 )
 
 if (BUILD_SHARED_LIBS)

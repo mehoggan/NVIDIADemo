@@ -11,9 +11,11 @@ install(FILES
   ./platform.h
   ./shader.h
   ./shader_program.h
+  ./square.h
   ./stream_helpers.h
   ./textured_triangle.h
   ./textures.h
   ./triangle.h
+  ./triangle_stream.h
   DESTINATION include/nvidia_demo
 )

@@ -11,38 +11,40 @@
 namespace Supported
 {
   typedef glm::vec2 Vec2;
+  typedef glm::vec2 Tex2;
   typedef glm::vec3 Vec3;
+  typedef glm::vec3 Col3;
 
   struct Vec2Col3
   {
     Vec2 pos_;
-    Vec3 col_;
+    Col3 col_;
   };
 
   struct Vec3Tex2
   {
     Vec3 pos_;
-    Vec2 tex_;
+    Tex2 tex_;
   };
 
   struct Vec3Col3
   {
     Vec3 pos_;
-    Vec3 col_;
+    Col3 col_;
   };
 
   struct Vec2Col3Tex2
   {
     Vec2 pos_;
-    Vec3 col_;
-    Vec2 tex_;
+    Col3 col_;
+    Tex2 tex_;
   };
 
   struct Vec3Col3Tex2
   {
     Vec3 pos_;
-    Vec3 col_;
-    Vec2 tex_;
+    Col3 col_;
+    Tex2 tex_;
   };
 
   typedef std::uint8_t uByte;
