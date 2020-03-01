@@ -9,11 +9,11 @@
 #include <cstdlib>
 #include <functional>
 #include <iostream>
+#include <memory>
 #include <mutex>
 #include <string>
-#include <memory>
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 class Application
 {
